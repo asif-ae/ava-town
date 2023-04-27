@@ -14,7 +14,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start from `pages/_document.jsx`.
 
-## Core Features
+## Project Core Features
 
 1. This project was build with Next JS and Tailwind CSS.
 2. Used some well known tools like Google Fonts, Material Icon set, ESLint, Prettier, Husky, etc.
