@@ -1,0 +1,161 @@
+[
+  {
+    "name": "Category",
+    "isMain": true,
+    "children": [
+      {
+        "name": "Full avatar",
+        "isMain": false,
+        "type": "nested",
+        "link": "/full-avatar",
+        "children": [
+          {
+            "name": "Human based",
+            "isMain": false,
+            "type": "nested",
+            "link": "/full-avatar/human-based",
+            "children": [
+              {
+                "name": "Male",
+                "isMain": false,
+                "type": "normal",
+                "link": "/full-avatar/human-based/male",
+                "category": "male"
+              },
+              {
+                "name": "Female",
+                "isMain": false,
+                "type": "normal",
+                "link": "/full-avatar/human-based/female",
+                "category": "female"
+              },
+              {
+                "name": "Unisex",
+                "isMain": false,
+                "type": "normal",
+                "link": "/full-avatar/human-based/unisex",
+                "category": "unisex"
+              }
+            ]
+          },
+          {
+            "name": "Animal & mythical creature based"
+          },
+          {
+            "name": "Robot based"
+          },
+          {
+            "name": "Others"
+          }
+        ]
+      },
+      {
+        "name": "Others"
+      }
+    ]
+  },
+  {
+    "name": "Contents",
+    "isMain": true,
+    "type": "checkbox",
+    "children": [
+      {
+        "name": "VRChat(Quest)",
+        "type": "checkbox"
+      },
+      {
+        "name": "VRChat(PCVR)",
+        "type": "checkbox"
+      },
+      {
+        "name": "Others",
+        "type": "checkbox"
+      }
+    ]
+  },
+  {
+    "name": "Price",
+    "isMain": true,
+    "type": "checkbox",
+    "children": [
+      {
+        "name": "Under $10",
+        "type": "checkbox"
+      },
+      {
+        "name": "$10 to $20",
+        "type": "checkbox"
+      },
+      {
+        "name": "$20 to $30",
+        "type": "checkbox"
+      },
+      {
+        "name": "$30 to $40",
+        "type": "checkbox"
+      },
+      {
+        "name": "$40 to $50",
+        "type": "checkbox"
+      },
+      {
+        "name": "$50 to $70",
+        "type": "checkbox"
+      },
+      {
+        "name": "$70 & above",
+        "type": "checkbox"
+      }
+    ]
+  },
+  {
+    "name": "Polygon amount",
+    "isMain": true,
+    "type": "checkbox",
+    "children": [
+      {
+        "name": "Under △7,500",
+        "type": "checkbox"
+      },
+      {
+        "name": "△7,500 to △10,000",
+        "type": "checkbox"
+      },
+      {
+        "name": "△10,000 to △15,000",
+        "type": "checkbox"
+      },
+      {
+        "name": "△15,000 to △20,000",
+        "type": "checkbox"
+      },
+      {
+        "name": "△20,000 to △32,000",
+        "type": "checkbox"
+      },
+      {
+        "name": "△32,000 to △70,000",
+        "type": "checkbox"
+      },
+      {
+        "name": "△70,000 & Above",
+        "type": "checkbox"
+      }
+    ]
+  },
+  {
+    "name": "Auto upload support",
+    "isMain": true,
+    "type": "checkbox",
+    "children": [
+      {
+        "name": "Supported",
+        "type": "checkbox"
+      },
+      {
+        "name": "Unsupported",
+        "type": "checkbox"
+      }
+    ]
+  }
+]

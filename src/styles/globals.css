@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 *,
 html,
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   box-sizing: border-box;
 }
@@ -22,4 +22,35 @@ img {
   max-width: 100%;
   max-height: 100%;
   position: absolute;
+}
+
+/* 
+ * Tooltip
+ * I took this small portion of code from w3schools.
+*/
+.tooltip .tooltiptext,
+.tooltip .tooltiptext-right {
+  visibility: hidden;
+  width: 160px;
+  background-color: rgba(106, 106, 106, 1);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltiptext {
+  bottom: -50px;
+}
+
+.tooltiptext-right {
+  top: 5px;
+  left: -180px;
+}
+
+.tooltip:hover .tooltiptext,
+.tooltip:hover .tooltiptext-right {
+  visibility: visible;
 }
