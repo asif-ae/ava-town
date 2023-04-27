@@ -6,11 +6,13 @@ import {
   LocalMall as LocalMallIcon,
   AddShoppingCart as AddShoppingCartIcon,
 } from "@mui/icons-material";
+import { useRouter } from "next/router";
 import allData from "@/data/index.json";
 import { filterById } from "@/utils/filter";
 import MainTemplate from "@/components/templates/Main";
 
-export default function Item({data}) {
+export default function Item() {
+  const {query} = useRouter();
   const [showAvatar, setShowAvatar] = useState(false);
 
   const data = filterById(allData, parseInt(query.id, 10))?.[0];
