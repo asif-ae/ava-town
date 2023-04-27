@@ -130,24 +130,3 @@ export default function Item() {
     </MainTemplate>
   );
 }
-
-// export async function getStaticPaths() {
-//   const paths = allData.map((item) => ({
-//     params: { id: item.id.toString() },
-//   }));
-
-//   return {
-//     paths,
-//     fallback: false, // can also be true or 'blocking'
-//   };
-// }
-
-// export async function getStaticProps({ query }) {
-//   const data = filterById(allData, parseInt(query.id, 10))?.[0];
-
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// }
