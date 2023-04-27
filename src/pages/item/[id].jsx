@@ -10,8 +10,11 @@ import allData from "@/data/index.json";
 import { filterById } from "@/utils/filter";
 import MainTemplate from "@/components/templates/Main";
 
-export default function Item({ data }) {
+export default function Item({data}) {
   const [showAvatar, setShowAvatar] = useState(false);
+
+  const data = filterById(allData, parseInt(query.id, 10))?.[0];
+
   return (
     <MainTemplate>
       <main className="min-h-screen w-full">
@@ -26,30 +29,34 @@ export default function Item({ data }) {
             priority
           />
           <div className="tooltip w-40 h-40 absolute left-40 bottom-[-50%] -translate-y-2/4">
-            <Image
-              src={`https://drive.google.com/uc?id=${data.image}`}
-              alt="Banner"
-              width={1024}
-              height={1024}
-              className="rounded-full border-4 hover:border-gray-dark cursor-pointer transition-all ease-out"
-              priority
-              onClick={() => setShowAvatar(true)}
-            />
-            <span class="tooltiptext">Click to see full size</span>
+            {data?.image && (
+              <Image
+                src={`https://drive.google.com/uc?id=${data?.image}`}
+                alt="Banner"
+                width={1024}
+                height={1024}
+                className="rounded-full border-4 hover:border-gray-dark cursor-pointer transition-all ease-out"
+                priority
+                onClick={() => setShowAvatar(true)}
+              />
+            )}
+            <span className="tooltiptext">Click to see full size</span>
           </div>
         </div>
 
         {showAvatar && (
           <div className="absolute top-0 bottom-0 left-0 right-0 z-[1500] bg-[rgba(0,0,0,0.75)] transition-all ease-out">
             <div className="relative w-full h-screen min-w-full min-h-screen max-w-full max-h-screen">
-              <Image
-                src={`https://drive.google.com/uc?id=${data.image}`}
-                alt="Banner"
-                width={1024}
-                height={1024}
-                className="w-full object-contain object-center p-20"
-                priority
-              />
+              {data?.image && (
+                <Image
+                  src={`https://drive.google.com/uc?id=${data?.image}`}
+                  alt="Banner"
+                  width={1024}
+                  height={1024}
+                  className="w-full object-contain object-center p-20"
+                  priority
+                />
+              )}
               <button
                 type="button"
                 className="tooltip absolute right-[10px] top-[10px] p-2.5 bg-white flex items-center justify-center border border-white hover:border-[#4c45f6] rounded-full transition-all ease-out"
@@ -57,22 +64,22 @@ export default function Item({ data }) {
                 aria-hidden="true"
               >
                 <CloseIcon className="w-5 h-auto text-[#4c45f6]" />
-                <span class="tooltiptext-right">Close</span>
+                <span className="tooltiptext-right">Close</span>
               </button>
             </div>
           </div>
         )}
 
         <div className="px-20 h-20 flex items-center justify-end">
-          <p className="text-red text-3xl">${data.price}</p>
+          <p className="text-red text-3xl">${data?.price}</p>
         </div>
 
         {/* Avatar Main */}
         <div className="px-20 flex items-center justify-between">
           <div className="pr-5">
-            <h2 className="text-2xl font-bold text-gray-dark">{data.title}</h2>
-            <h5 className="text-xl font-medium text-[#01875f]">{data.name}</h5>
-            <p className="my-3 text-gray-dark">{data.desc}</p>
+            <h2 className="text-2xl font-bold text-gray-dark">{data?.title}</h2>
+            <h5 className="text-xl font-medium text-[#01875f]">{data?.name}</h5>
+            <p className="my-3 text-gray-dark">{data?.desc}</p>
           </div>
           <div className="pl-5 flex flex-col">
             <button
@@ -91,11 +98,11 @@ export default function Item({ data }) {
             About this avatar
           </h4>
           <div className="mt-5">
-            {data.longText.split(/(?:\r\n|\r|\n)/g)?.map((text) => (
-              <>
+            {data?.longText.split(/(?:\r\n|\r|\n)/g)?.map((text) => (
+              <div key={text}>
                 <p>{text}</p>
                 <br />
-              </>
+              </div>
             ))}
           </div>
         </div>
@@ -114,16 +121,31 @@ export default function Item({ data }) {
               <StarIcon className="text-[#F9AE3F] text-3xl" />
             </div>
           </div>
-          <p className="text-3xl text-[#01875f]">{data.ratings}</p>
-          <p className="text-xl text-gray-dark">{data.totalReview} Likes</p>
+          <p className="text-3xl text-[#01875f]">{data?.ratings}</p>
+          <p className="text-xl text-gray-dark">{data?.totalReview} Likes</p>
         </div>
       </main>
     </MainTemplate>
   );
 }
 
-Item.getInitialProps = async ({ query }) => {
-  const data = filterById(allData, parseInt(query.id, 10))?.[0];
+// export async function getStaticPaths() {
+//   const paths = allData.map((item) => ({
+//     params: { id: item.id.toString() },
+//   }));
 
-  return { data };
-};
+//   return {
+//     paths,
+//     fallback: false, // can also be true or 'blocking'
+//   };
+// }
+
+// export async function getStaticProps({ query }) {
+//   const data = filterById(allData, parseInt(query.id, 10))?.[0];
+
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// }

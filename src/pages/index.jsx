@@ -6,8 +6,12 @@ import Pagination from "@/components/Pagination";
 import Card from "@/components/Card";
 import Select from "@/components/Select";
 
-export default function Homepage({ data: getData, totalPages }) {
+export default function Homepage() {
   const { data, setData, baseURL } = useContext(DataContext);
+
+  const getData = allData;
+  const totalRecords = allData?.length || 0;
+  const totalPages = Math.ceil(totalRecords / 12);
 
   return (
     <MainTemplate>
@@ -37,13 +41,3 @@ export default function Homepage({ data: getData, totalPages }) {
     </MainTemplate>
   );
 }
-
-Homepage.getInitialProps = async () => {
-  const totalRecords = allData?.length || 0;
-  const totalPages = Math.ceil(totalRecords / 12);
-  return {
-    data: allData,
-    totalPages,
-    totalRecords,
-  };
-};

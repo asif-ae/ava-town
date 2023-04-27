@@ -7,14 +7,18 @@ import { filterByGender } from "@/utils/filter";
 import allData from "@/data/index.json";
 import Select from "@/components/Select";
 
-export default function Unisex({ data: getData, totalPages }) {
+export default function Unisex() {
   const { data, setData, baseURL } = useContext(DataContext);
+
+  const getData = filterByGender(allData, "unisex");
+  const totalRecords = data?.length || 0;
+  const totalPages = Math.ceil(totalRecords / 12);
 
   useEffect(() => {
     if (!(totalPages > 1)) {
       setData(getData);
     }
-  }, [data]);
+  }, []);
   return (
     <MainTemplate>
       <main className="bg-[#FAFAFA] w-full">
@@ -45,15 +49,3 @@ export default function Unisex({ data: getData, totalPages }) {
     </MainTemplate>
   );
 }
-
-Unisex.getInitialProps = async () => {
-  const data = await filterByGender(allData, "unisex");
-  const totalRecords = (await data?.length) || 0;
-  const totalPages = Math.ceil(totalRecords / 12);
-
-  return {
-    data,
-    totalPages,
-    totalRecords,
-  };
-};

@@ -7,14 +7,18 @@ import Pagination from "@/components/Pagination";
 import Card from "@/components/Card";
 import Select from "@/components/Select";
 
-export default function Male({ data: getData, totalPages }) {
+export default function Male() {
   const { data, setData, baseURL } = useContext(DataContext);
+
+  const getData = filterByGender(allData, "male");
+  const totalRecords = data?.length || 0;
+  const totalPages = Math.ceil(totalRecords / 12);
 
   useEffect(() => {
     if (!(totalPages > 1)) {
       setData(getData);
     }
-  }, [data]);
+  }, []);
   return (
     <MainTemplate>
       <main className="bg-[#FAFAFA] w-full">
@@ -45,14 +49,3 @@ export default function Male({ data: getData, totalPages }) {
     </MainTemplate>
   );
 }
-
-Male.getInitialProps = async () => {
-  const data = await filterByGender(allData, "male");
-  const totalRecords = (await data?.length) || 0;
-  const totalPages = Math.ceil(totalRecords / 12);
-  return {
-    data,
-    totalPages,
-    totalRecords,
-  };
-};

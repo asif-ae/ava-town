@@ -6,14 +6,18 @@ import Card from "@/components/Card";
 import Pagination from "@/components/Pagination";
 import Select from "@/components/Select";
 
-export default function HumanBased({ data: getData, totalPages }) {
+export default function HumanBased() {
   const { data, setData, baseURL } = useContext(DataContext);
+
+  const getData = allData;
+  const totalRecords = allData?.length || 0;
+  const totalPages = Math.ceil(totalRecords / 12);
 
   useEffect(() => {
     if (!(totalPages > 1)) {
       setData(getData);
     }
-  }, [data]);
+  }, []);
   return (
     <MainTemplate>
       <main className="bg-[#FAFAFA] w-full">
@@ -44,13 +48,3 @@ export default function HumanBased({ data: getData, totalPages }) {
     </MainTemplate>
   );
 }
-
-HumanBased.getInitialProps = async () => {
-  const totalRecords = allData?.length || 0;
-  const totalPages = Math.ceil(totalRecords / 12);
-  return {
-    data: allData,
-    totalPages,
-    totalRecords,
-  };
-};

@@ -19,9 +19,7 @@ export default function DataContextProvider({ children }) {
     if (window) {
       setBaseURL(window.location.origin);
     }
-  }, []);
 
-  useEffect(() => {
     if (pathname.includes("/unisex")) {
       setRoutes(["Full avatar", "Human based", "Unisex"]);
       setFilter("unisex");
